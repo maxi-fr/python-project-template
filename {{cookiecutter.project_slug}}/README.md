@@ -18,6 +18,11 @@ This project uses [uv](https://github.com/astral-sh/uv) for dependency managemen
     uv sync
     ```
 
+3.  Set up pre-commit hooks:
+    ```bash
+    uv run pre-commit install
+    ```
+
 ### Running Tests
 
 To run tests using `pytest`:

@@ -47,7 +47,12 @@ Follow the prompts to configure your project.
     uv sync
     ```
 
-4.  Run tests:
+4.  Set up pre-commit hooks (automatically generates `requirements.txt`):
+    ```bash
+    uv run pre-commit install
+    ```
+
+5.  Run tests:
     ```bash
     uv run pytest
     ```
