@@ -7,7 +7,7 @@ A simple Python project template using [uv](https://github.com/astral-sh/uv) and
 -   **Dependency Management:** Powered by `uv`.
 -   **Linting & Formatting:** Fast and consistent code style with `ruff`.
 -   **Testing:** Pre-configured `pytest` setup.
--   **CI/CD:** GitHub Actions workflow included.
+-   **Code Quality:** Robust pre-commit hooks configured for formatting, linting, and type checking.
 -   **Python Version:** Targets Python 3.13 by default (configurable).
 
 ## Usage
@@ -47,12 +47,12 @@ Follow the prompts to configure your project.
     uv sync
     ```
 
-4.  Set up pre-commit hooks (automatically generates `requirements.txt`):
+4.  Set up pre-commit hooks (automatically generates `requirements.txt`, lints, and runs tests):
     ```bash
     uv run pre-commit install
     ```
 
-5.  Run tests:
+5.  Run tests manually (optional, since pre-commit does it too):
     ```bash
     uv run pytest
     ```

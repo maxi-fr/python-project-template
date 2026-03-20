@@ -4,7 +4,7 @@
 
 ## Development
 
-This project uses [uv](https://github.com/astral-sh/uv) for dependency management and [ruff](https://github.com/astral-sh/ruff) for linting and formatting.
+This project uses [uv](https://github.com/astral-sh/uv) for dependency management, [ruff](https://github.com/astral-sh/ruff) for linting and formatting, and pre-commit hooks to automate code quality checks.
 
 ### Setup
 
@@ -18,14 +18,14 @@ This project uses [uv](https://github.com/astral-sh/uv) for dependency managemen
     uv sync
     ```
 
-3.  Set up pre-commit hooks:
+3.  Set up pre-commit hooks (this will run linting, formatting, and tests on every commit):
     ```bash
     uv run pre-commit install
     ```
 
 ### Running Tests
 
-To run tests using `pytest`:
+To run tests manually using `pytest` (otherwise pre-commit will run them):
 
 ```bash
 uv run pytest
