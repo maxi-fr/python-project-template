@@ -80,8 +80,41 @@ testpaths = ["tests"]
 
 [tool.mypy]
 python_version = "{{cookiecutter.python_version}}"
+# --- The Meta Flag (for any new added flags which fall under strict) ---
 strict = true
-# Specifically handle third-party libs without types
-ignore_missing_imports = true
-warn_unused_configs = true
-show_error_codes = true
+
+# --- 1. Disallow Dynamic Typing ---
+disallow_any_generics = true      # e.g., List instead of List[int]
+disallow_subclassing_any = true   # Prevents inheriting from a class typed as 'Any'
+
+# --- 2. Untyped Definitions & Calls ---
+disallow_untyped_calls = true     # Prevents calling a function without type hints
+disallow_untyped_defs = true      # Forces function signatures to have hints (Args + Return)
+disallow_incomplete_defs = true   # Prevents partial hints (e.g., hinting args but not return)
+check_untyped_defs = true         # Look inside functions even if they don't have hints
+disallow_untyped_decorators = true # Ensures decorators are typed
+
+# --- 3. None and Optional Handling ---
+no_implicit_optional = true       # Prevents 'x: str = None' (must be 'Optional[str]')
+
+# --- 4. Configuring Warnings ---
+warn_redundant_casts = true       # Warns if you cast something to its own type
+warn_unused_ignores = true        # Warns if a '# type: ignore' isn't needed anymore
+warn_return_any = true            # Warns if a function returns 'Any' when hinted otherwise
+warn_unreachable = true           # Warns about code that can never run
+
+# --- 5. Miscellaneous Strictness ---
+no_implicit_reexport = true       # Prevents access to 'from x import y' unless 'y' is in x's __all__
+strict_equality = true            # Prevents 'x == y' if types are fundamentally incompatible
+strict_optional = true            # (On by default anyway) Handle 'None' strictly
+
+# Not part of strict = true
+# --- 6. Quality of Life / Reporting ---
+show_error_codes = true           # Shows [error-code] for easy ignoring
+pretty = true                     # Colorized output and context markers
+show_column_numbers = true        # Better precision in error reports
+warn_unused_configs = true        # Alerts you if a config line isn't doing anything
+
+# --- 7. Handling Dependencies ---
+ignore_missing_imports = false     # Don't error on libs without stubs (e.g. pandas)
+follow_imports = "normal"         # How to follow imports ("silent", "normal", "error")
