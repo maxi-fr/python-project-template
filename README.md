@@ -12,15 +12,14 @@ A simple Python project template using [uv](https://github.com/astral-sh/uv) and
 
 ## Usage
 
-You need to have `cookiecutter` installed:
-
-```bash
+You need to have cookiecutter installed (preferably via uv):
+```console
 uv tool install cookiecutter
 ```
 
 Generate a new project:
 
-```bash
+```console
 cookiecutter https://github.com/yourusername/simple-python-template
 # or if you have cloned this repo locally:
 cookiecutter .
@@ -30,29 +29,33 @@ Follow the prompts to configure your project.
 
 ## After Generation
 
-1.  Navigate to your new project directory:
-    ```bash
+1.  Navigate to your new project directory
+    ```console
     cd my_awesome_project
     ```
 
-2.  Initialize a git repository:
-    ```bash
+2.  Initialize a git repository \
+    *Crucial*: Do this before installing hooks.
+    ```console
     git init
+    ```
+
+3.  Install dependencies
+    ```console
+    uv sync
+    ```
+
+4.  Set up pre-commit hooks (automatically generates `requirements.txt`, lints, and runs tests)
+    ```console
+    uv run pre-commit install
+    ```
+5.  Initial commit:   
+    ```console
     git add .
     git commit -m "Initial commit"
     ```
 
-3.  Install dependencies:
-    ```bash
-    uv sync
-    ```
-
-4.  Set up pre-commit hooks (automatically generates `requirements.txt`, lints, and runs tests):
-    ```bash
-    uv run pre-commit install
-    ```
-
-5.  Run tests manually (optional, since pre-commit does it too):
-    ```bash
+6.  Run tests manually (optional, since pre-commit does it too)
+    ```console
     uv run pytest
     ```
