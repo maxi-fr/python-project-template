@@ -12,43 +12,76 @@ authors = [
 readme = "README.md"
 requires-python = ">={{cookiecutter.python_version}}"
 dependencies = []
+# Added: Classified as a dynamic versioning-ready project
+dynamic = ["version"]
 
 [dependency-groups]
 dev = [
     "pytest>=8.0.0",
+    "pytest-cov>=4.1.0", # Added for coverage reporting
     "ruff>=0.3.0",
     "pre-commit>=3.0.0",
     "mypy>=1.0.0",
+    "validate-pyproject>=0.23",
 ]
+
+[tool.uv]
+# Ensures dev dependencies are installed by default
+dev-dependencies = true
+# Useful if you want uv to manage your virtualenv location
+managed = true
 
 [tool.ruff]
 line-length = {{cookiecutter.line_length}}
-indent-width = 4
 target-version = "py{{cookiecutter.python_version.replace('.', '')}}"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "SIM", "ANN"]
-ignore = []
+select = ["ALL"]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "FIX",    # for comments like TODO, FIXME
+    "TD",     # for structure of TODO comments
+    "D100",   # Missing docstring in public module
+    "D104",   # Missing docstring in public package
+    "ANN101", # Missing type annotation for self (deprecated in modern Ruff)
+    "COM812", # Trailing comma missing (conflicts with formatter)
+    "ISC001", # Single line implicit string concatenation (conflicts with formatter)
+]
+
+[tool.ruff.lint.isort]
+# Ensures imports are grouped logically
+known-first-party = ["{{cookiecutter.project_slug}}"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",    # assert
+    "PLR0913", # too-many-arguments
+    "F401",    # unused import
+    "ARG001",  # Unused function args (fixtures)
+    "PLR2004", # Magic value used in comparison
+    "D",       # Ignore docstrings in tests
+]
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
-skip-magic-trailing-comma = true
+# Usually, keeping the comma helps with cleaner diffs in git
+skip-magic-trailing-comma = false 
 line-ending = "auto"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q"
-testpaths = [
-    "tests",
-]
+# Added -v for more detail and --cov to integrate coverage
+addopts = "-ra -q -v --cov={{cookiecutter.project_slug}}"
+testpaths = ["tests"]
 
 [tool.mypy]
-# The 'strict' flag is a shortcut for about 15 individual flags
+python_version = "{{cookiecutter.python_version}}"
 strict = true
-
-# If you want to be surgical instead of using 'strict = true', 
-# these are the two specifically for your example:
-disallow_untyped_defs = true          # Reports 'def f(x):' as an error
-disallow_incomplete_defs = true       # Reports 'def f(x: int):' (missing return type)
-check_untyped_defs = true             # Even if the 'def' is untyped, check the body
+# Specifically handle third-party libs without types
+ignore_missing_imports = true
+warn_unused_configs = true
+show_error_codes = true
