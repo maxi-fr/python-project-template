@@ -26,10 +26,7 @@ dev = [
 ]
 
 [tool.uv]
-# Ensures dev dependencies are installed by default
-dev-dependencies = true
-# Useful if you want uv to manage your virtualenv location
-managed = true
+default-groups = ["dev"]
 
 [tool.ruff]
 line-length = {{cookiecutter.line_length}}
