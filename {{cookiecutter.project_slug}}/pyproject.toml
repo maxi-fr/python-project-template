@@ -58,6 +58,7 @@ convention = "numpy"
     "ARG001",  # Unused function args (fixtures)
     "PLR2004", # Magic value used in comparison
     "D",       # Ignore docstrings in tests
+    "INP001",  # No __init__.py in tests folder
 ]
 
 [tool.ruff.format]

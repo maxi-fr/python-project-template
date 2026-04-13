@@ -59,7 +59,7 @@ Follow the prompts to configure your project.
     ```
 5.  Initial commit:   
     ```console
-    git add .
+    git add -a
     git commit -m "Initial commit"
     ```
 ## After Initialization
