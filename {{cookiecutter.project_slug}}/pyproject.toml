@@ -8,8 +8,6 @@ authors = [
 readme = "README.md"
 requires-python = ">={{cookiecutter.python_version}}"
 dependencies = []
-# Added: Classified as a dynamic versioning-ready project
-dynamic = ["version"]
 
 [dependency-groups]
 dev = [
