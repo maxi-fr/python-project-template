@@ -16,7 +16,7 @@ A simple Python project template using [uv](https://docs.astral.sh/uv/) and [ruf
 Install [uv](https://docs.astral.sh/uv/) following [these instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
 
-Install [cookiecutter](https://www.cookiecutter.io/) installed (preferably via uv):
+Install [cookiecutter](https://www.cookiecutter.io/) (preferably via uv):
 ```console
 uv tool install cookiecutter
 ```
@@ -69,9 +69,12 @@ Once initialized, you can use the following commands to manage your project:
 | Task                | Command            |
 |---------------------|--------------------|
 | Adding dependencies | uv add <dependency>|
+| Removing dependencies | uv remove <dependency>|
 | Sync Dependencies   | uv sync            |
 | Linting (Manual)    | uv run ruff check  |
 | Formatting (Manual) | uv run ruff format |
 | Run Tests           | uv run pytest      |
-| Type Checking       | uv run mypy .      |
+| Type Checking       | uv run mypy        |
 | Pre-commit Hooks    | uv run pre-commit --all-files  |
+
+These are only a selection of all possible commands
