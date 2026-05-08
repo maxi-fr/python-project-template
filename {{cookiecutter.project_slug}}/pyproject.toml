@@ -20,8 +20,8 @@ dev = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.10.8,<0.12"]
+build-backend = "uv_build"
 
 [tool.uv]
 default-groups = ["dev"]
@@ -65,7 +65,7 @@ convention = "numpy"
 quote-style = "double"
 indent-style = "space"
 # Usually, keeping the comma helps with cleaner diffs in git
-skip-magic-trailing-comma = false 
+skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.pytest.ini_options]
@@ -76,6 +76,7 @@ testpaths = ["tests"]
 
 [tool.mypy]
 python_version = "{{cookiecutter.python_version}}"
+files = "src"
 # --- The Meta Flag (for any new added flags which fall under strict) ---
 strict = true
 

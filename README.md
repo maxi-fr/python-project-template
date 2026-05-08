@@ -13,7 +13,7 @@ A simple Python project template using [uv](https://docs.astral.sh/uv/) and [ruf
 
 # Usage
 
-Install [uv](https://docs.astral.sh/uv/) following [these instructions](https://docs.astral.sh/uv/getting-started/installation/).  
+Install [uv](https://docs.astral.sh/uv/) following [these instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
 
 Install [cookiecutter](https://www.cookiecutter.io/) installed (preferably via uv):
@@ -57,7 +57,7 @@ Follow the prompts to configure your project.
     ```console
     uv run pre-commit install
     ```
-5.  Initial commit:   
+5.  Initial commit:
     ```console
     git add -a
     git commit -m "Initial commit"
@@ -75,7 +75,3 @@ Once initialized, you can use the following commands to manage your project:
 | Run Tests           | uv run pytest      |
 | Type Checking       | uv run mypy .      |
 | Pre-commit Hooks    | uv run pre-commit --all-files  |
-
-
-
-
