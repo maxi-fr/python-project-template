@@ -12,13 +12,21 @@ This project uses [uv](https://github.com/astral-sh/uv) for dependency managemen
     ```bash
     curl -LsSf https://astral.sh/uv/install.sh | sh
     ```
+2.  Clone the repo:
+    ```bash
+    git clone https://github.com/<user_name>/{{cookiecutter.project_slug}}.git
+    ```
+    and navigate to it:
+    ```bash
+    cd {{cookiecutter.project_slug}}
+    ```
 
-2.  Sync dependencies:
+4.  Sync dependencies:
     ```bash
     uv sync
     ```
 
-3.  Set up pre-commit hooks (this will run linting, formatting, and tests on every commit):
+5.  Set up pre-commit hooks (this will run linting, formatting, and tests on every commit):
     ```bash
     uv run pre-commit install
     ```
@@ -43,4 +51,10 @@ To format code:
 
 ```bash
 uv run ruff format .
+```
+
+### Type checking
+
+```bash
+uv run ty check .
 ```
